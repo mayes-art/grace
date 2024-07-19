@@ -2,9 +2,7 @@ package main
 
 import (
 	"grace/database"
-	"grace/model"
 	"grace/routers"
-	"log"
 )
 
 func main() {
@@ -13,9 +11,10 @@ func main() {
 	database.Connect()
 
 	// 自動遷移數據庫
-	if err := database.GetDB().AutoMigrate(&model.User{}); err != nil {
-		log.Fatal("failed to migrate database:", err)
-	}
+	// if err := database.GetDB().AutoMigrate(&model.User{}); err != nil {
+	// 	log.Fatal("failed to migrate database:", err)
+	// }
+	database.Migrate()
 
 	// 設置路由
 	router := routers.SetupRouter()

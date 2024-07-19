@@ -2,6 +2,7 @@ package database
 
 import (
 	"fmt"
+	"grace/model"
 	"log"
 	"os"
 
@@ -29,6 +30,10 @@ func Connect() {
 	if err != nil {
 		log.Fatal("failed to connect to database:", err)
 	}
+}
+
+func Migrate() {
+	DB.AutoMigrate(model.Models...)
 }
 
 func GetDB() *gorm.DB {
