@@ -14,7 +14,7 @@ func main() {
 	// if err := database.GetDB().AutoMigrate(&model.User{}); err != nil {
 	// 	log.Fatal("failed to migrate database:", err)
 	// }
-	database.Migrate()
+	// database.Migrate()
 
 	// 設置路由
 	router := routers.SetupRouter()
