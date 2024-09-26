@@ -3,10 +3,10 @@ package main
 import (
 	"grace/database"
 	"grace/routers"
+	"os"
 )
 
 func main() {
-
 	// 連接數據庫
 	database.Connect()
 
@@ -19,6 +19,11 @@ func main() {
 	// 設置路由
 	router := routers.SetupRouter()
 
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
 	// 運行服務器
-	router.Run(":8080")
+	router.Run(":" + port)
 }
